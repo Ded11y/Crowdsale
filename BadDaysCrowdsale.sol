@@ -127,25 +127,25 @@ contract BadDaysCrowdsale is Pausable, CappedCrowdsale, TimedCrowdsale, ContextM
         _token = token;
         _maticWeth = maticWeth;
         
-        //For Production Live
-        /*
-        _configCategory("Team", 0, 15552000, 0, 0, 500);
-        _configCategory("Operations", 1, 7776000, 0, 0, 500);
-        _configCategory("Marketing", 2, 7776000, 0, 0, 500);
-        _configCategory("Advisors", 3, 2592000, 0, 0, 1000);
-        _configCategory("Growth Fund", 4, 15552000, 0, 0, 500);
-        _configCategory("Escrow Vault", 5, 2592000, 0, 0, 10000);
-        _configCategory("Play Rewards", 6, 2592000, 0, 0, 500);
-        _configCategory("Seed Round", 7, 2592000, 2592000, 1000, 1125);
-        _configCategory("Strategic Round", 8, 0, 2419200, 500, 1187);
-        _configCategory("Private Round 1", 9, 0, 1814400, 700, 1550);
-        _configCategory("Private Round 2", 10, 0, 1209600, 1300, 1740);
-        _configCategory("Public Round", 11, 0, 604800, 2000, 4000);
+        //desc, index, periodAfterTGE, percentClaimableAtTGE, vestingPeriodAfterTGE
+        _configCategory("Team", 0, 15552000, 0, 1080);
+        _configCategory("Operations", 1, 7776000, 0, 690);
+        _configCategory("Marketing", 2, 7776000, 0, 690);
+        _configCategory("Advisors", 3, 7776000, 0, 720);
+        _configCategory("Growth Fund", 4, 15552000, 0, 780);
+        _configCategory("Escrow Vault", 5, 2592000, 0, 0);
+        _configCategory("Play Rewards", 6, 86400, 0, 630);
+        _configCategory("Seed Round", 7, 5184000, 0, 450);
+        _configCategory("Strategic Round", 8, 2592000, 0, 360);
+        _configCategory("Private Round 1", 9, 1814400, 0, 240);
+        _configCategory("Private Round 2", 10, 1209600, 0, 210);
+        _configCategory("Public Round", 11, 604800, 15, 120);
         
         oneMonth = 2592000;
         oneDay = 86400;
-        */
- 
+        
+        //For debugging
+        /*
         //desc, index, periodAfterTGE, percentClaimableAtTGE, vestingPeriodAfterTGE
         _configCategory("Team", 0, 1080, 0, 1080);
         _configCategory("Operations", 1, 540, 0, 690);
@@ -161,6 +161,7 @@ contract BadDaysCrowdsale is Pausable, CappedCrowdsale, TimedCrowdsale, ContextM
         _configCategory("Public Round", 11, 420, 15, 120);
         oneMonth = 180;
         oneDay = 60;
+        */
         
         _initializeEIP712(name);
     }
