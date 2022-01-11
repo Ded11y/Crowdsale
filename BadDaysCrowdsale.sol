@@ -13,16 +13,16 @@ import {NativeMetaTransaction} from "./NativeMetaTransaction.sol";
 
 contract BadDaysCrowdsale is Pausable, CappedCrowdsale, TimedCrowdsale, ContextMixin, NativeMetaTransaction {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-    string public name = "BadDaysCrowdsale";
+    string constant name = "BadDaysCrowdsale";
     
     //Whitelisted addresses that can engage in pre-sale 
     mapping(address => bool) internal whitelisted;
     
     //Constant counter for a month = 30 days = 2,592,000 seconds
-    uint256 public oneMonth;
+    uint256 constant oneMonth = 2592000;
 
     //Contant counter for a day = 86400 seconds
-    uint256 public oneDay;
+    uint256 constant oneDay = 86400;
     
     //Account -> Category -> Amount Withdrawn after TGE for Category 7 through 11
     mapping(address => mapping(uint256 => uint256)) public claimedTokensAfterTGE;
@@ -140,28 +140,6 @@ contract BadDaysCrowdsale is Pausable, CappedCrowdsale, TimedCrowdsale, ContextM
         _configCategory("Private Round 1", 9, 1814400, 0, 240);
         _configCategory("Private Round 2", 10, 1209600, 0, 210);
         _configCategory("Public Round", 11, 604800, 15, 120);
-        
-        oneMonth = 2592000;
-        oneDay = 86400;
-        
-        //For debugging
-        /*
-        //desc, index, periodAfterTGE, percentClaimableAtTGE, vestingPeriodAfterTGE
-        _configCategory("Team", 0, 1080, 0, 1080);
-        _configCategory("Operations", 1, 540, 0, 690);
-        _configCategory("Marketing", 2, 540, 0, 690);
-        _configCategory("Advisors", 3, 180, 0, 720);
-        _configCategory("Growth Fund", 4, 1080, 0, 780);
-        _configCategory("Escrow Vault", 5, 180, 0, 0);
-        _configCategory("Play Rewards", 6, 0, 0, 630);
-        _configCategory("Seed Round", 7, 3600, 0, 450);
-        _configCategory("Strategic Round", 8, 1800, 0, 360);
-        _configCategory("Private Round 1", 9, 1260, 0, 240);
-        _configCategory("Private Round 2", 10, 840, 0, 210);
-        _configCategory("Public Round", 11, 420, 15, 120);
-        oneMonth = 180;
-        oneDay = 60;
-        */
         
         _initializeEIP712(name);
     }
